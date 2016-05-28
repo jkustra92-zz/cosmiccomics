@@ -49,10 +49,14 @@ router.get("/:title/:startYear/:issueNumber", function(req, res){
         }
       }
       var comicOutput = {
-        title: responseTitle
-        issueNumber
+        title: responseTitle,
+        issueNumber: responseIssueNumber,
+        imgUrl: responseImgUrl,
+        author: responseAuthor,
+        artist: responseArtist,
       }
-      res.render("comicviews/show.ejs", {myData})
+      
+      res.render("comicviews/show.ejs", {comic: comicOutput})
       // console.log(responseTitle, responseIssueNumber, responseImgUrl, responseAuthor, responseArtist);                                         //i feel like a master of parsing data.
   });
 });
