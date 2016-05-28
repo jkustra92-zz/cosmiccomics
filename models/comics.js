@@ -10,7 +10,7 @@ var mongoose = require('mongoose');
 var comicSchema = new mongoose.Schema({
   title: String,
   issueNumber: Number,
-  startYear: Number,
+  imgUrl: String,
   author: String,
   artist: String,
   qty: Number
