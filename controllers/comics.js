@@ -30,10 +30,10 @@ router.get("/:title/:startYear/:issueNumber", function(req, res){
   var title = req.params.title;
   var issueNumber = req.params.issueNumber;
   var startYear = req.params.startYear;
-  console.log(title, issueNumber, startYear);
+  // console.log(title, issueNumber, startYear);
   // request("http://gateway.marvel.com/v1/public/comics?title=Hawkeye&startYear=2012&issueNumber=3&ts=1464445747&apikey=a7fe91c1a8f9dff79e43e342dfc46824&hash=e74f4e496dbd0b8dfa55d26cf2fc797f", function(err, response, body){
   request("http://gateway.marvel.com/v1/public/comics?title=" + encodeURIComponent(title) + "&startYear=" + startYear + "&issueNumber=" + issueNumber + "&ts=" + ts + "&apikey=" + publicKey + "&hash=" + md5(ts+privateKey+publicKey), function(err, response, body){
-      res.send(body)
+      // res.send(body)
       var myData = JSON.parse(body)
       var responseTitle = myData.data.results[0].title;
       var responseIssueNumber = myData.data.results[0].issueNumber;
@@ -44,11 +44,16 @@ router.get("/:title/:startYear/:issueNumber", function(req, res){
         }
       }
       for (var i = 0; i < myData.data.results[0].creators.items.length; i++){
-        if (myData.data.results[0].creators.items[i].role === "artist"){
+        if (myData.data.results[0].creators.items[i].role === "artist" || myData.data.results[0].creators.items[i].role === "penciller (cover)"){
           var responseArtist = myData.data.results[0].creators.items[i].name;
         }
       }
-      console.log(responseTitle, responseIssueNumber, responseImgUrl, responseAuthor, responseArtist);
+      var comicOutput = {
+        title: responseTitle
+        issueNumber
+      }
+      res.render("comicviews/show.ejs", {myData})
+      // console.log(responseTitle, responseIssueNumber, responseImgUrl, responseAuthor, responseArtist);                                         //i feel like a master of parsing data.
   });
 });
 
