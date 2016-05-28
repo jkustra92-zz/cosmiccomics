@@ -1,7 +1,7 @@
 //==============
 // REQUIREMENTS
 //==============
-
+require('events').EventEmitter.prototype._maxListeners = 0;       //so marvel's API gets accessed by hella ppl so this is supposed to go at the top. idk i just follow the rules.
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
