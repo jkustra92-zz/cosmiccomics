@@ -16,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/jkustra92/cosmiccomics/issues"
   },
-  "homepage": "https://github.com/jkustra92/cosmiccomics#readme"
+  "homepage": "https://github.com/jkustra92/cosmiccomics#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "ejs": "^2.4.2",
+    "express": "^4.13.4",
+    "marvel-api": "^1.0.0",
+    "method-override": "^2.3.6",
+    "mongoose": "^4.4.19",
+    "morgan": "^1.7.0"
+  }
 }
