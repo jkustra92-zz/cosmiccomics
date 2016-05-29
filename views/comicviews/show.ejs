@@ -15,6 +15,7 @@
       <p><strong>Author: </strong><%=comic.author%></p>
       <p><strong>Artist: </strong><%=comic.artist%></p>
     </div>
+    <br>
     <p>would you like to add this comic?
     <form action = "/user/<%=user._id%>" method = "POST" id = "addform">
       <input type="hidden" name="title" value = "<%=comic.title%>">

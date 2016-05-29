@@ -7,10 +7,12 @@
 
 body {
   font-family: 'Inconsolata';
+  background-color: #4d6265;
+  color: #36030D;
 }
 
 header{
-  background-color: gray;
+  background-color: #e6f2ee;
 }
 
 ul {
@@ -19,24 +21,15 @@ ul {
 }
 
 li {
-  background-color: black;
+  background-color: #16272c;
   color: white;
-  border: 1px solid black;
+  border: 1px solid white;
   padding: 2em;
   transition: 1s;
 }
 
-li:nth-child(2n){
-  background-color: teal;
-  color: white;
-}
-
 li:hover{
-  background-color: white;
-}
-
-li:nth-child(2n):hover{
-  background-color: white;
+  background-color: #4d6265;
 }
 
 #logo {
@@ -48,17 +41,17 @@ li:nth-child(2n):hover{
 }
 
 a:link {
-  color: gray;
+  color: #bddbdb;
   text-decoration: none;
 }
 
 a:visited {
-  color: darkred;
+  color: #bddbdb;
   text-decoration: none;
 }
 
 a:hover {
-  color: blue;
+  color: #bddbdb;
   text-decoration: none;
 }
 
@@ -112,7 +105,7 @@ a:hover {
 
 #newuserform {
   text-align: center;
-  margin-top: 20em;
+  margin-top: 2em;
 }
 
 .userforminput {
@@ -222,6 +215,11 @@ footer{
 /*MEDIA QUERIES*/
 
 @media (min-width: 667px) {
+  #newuserform {
+    text-align: center;
+    margin-top: 6em;
+  }
+
   ul {
     font-size: 0;
   }
@@ -240,15 +238,10 @@ footer{
     border: 0;
   }
 
-  li:nth-child(2n){
-    background-color: teal;
-    color: white;
-  }
-
   header {
     padding-top: 2rem;
     height: 8em;
-    background-color: gray;
+    background-color: #e6f2ee;
     color: white;
   }
 
@@ -262,6 +255,10 @@ footer{
 
   #searchresultcontainer{
     text-align: center;
+    margin-top: 2em;
+  }
+
+  #showcontainer{
     margin-top: 2em;
   }
 }
