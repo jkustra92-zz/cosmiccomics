@@ -2,12 +2,18 @@
 <html>
 <head>
   <title></title>
+  <% include ../partials/head.ejs %>
 </head>
 <body>
-<form action = "/user/" method = "POST">
-  <input type = "text" name = "name" placeholder= "name">
-  <input type = "email" name = "email" placeholder = "email">
-  <button>submit</button>
-</form>
+  <% include ../partials/header.ejs %>
+  <div id = "newuserform">
+    <form action = "/user/" method = "POST" id = "userform">
+      <input class ="userforminput" type = "text" name = "name" placeholder= "name">
+      <br>
+      <input class ="userforminput" type = "email" name = "email" placeholder = "email">
+      <br>
+      <button id ="userformbutton">S U B M I T</button>
+    </form>
+  </div>
 </body>
 </html>

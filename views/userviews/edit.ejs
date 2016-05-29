@@ -2,24 +2,26 @@
 <html>
 <head>
   <title>Edit <%=comic.name%></title>
+  <% include ../partials/head.ejs %>
 </head>
 <body>
+  <% include ../partials/header.ejs %>
   <div id = "editcontainer">
     <form action = "/user/comics/<%=comic.id%>" method = "POST" id = "editform">
-      <label>Title: </label><input type = "text" name = "title" value = "<%=comic.title%>">
+      <label>Title: </label><input class = "editinput"type = "text" name = "title" value = "<%=comic.title%>">
       <br>
-      <label>Issue Number: </label><input type = "text" name = "issueNumber" value = "<%=comic.issueNumber%>">
+      <label>Issue Number: </label><input class = "editinput" type = "text" name = "issueNumber" value = "<%=comic.issueNumber%>">
       <br>
-      <label>Image URL: </label><input type = "text" name = "imgUrl" value = "<%=comic.imgUrl%>">
+      <label>Image URL: </label><input class = "editinput" type = "text" name = "imgUrl" value = "<%=comic.imgUrl%>">
       <br>
-      <label>Author: </label><input type = "string" name = "author" value = "<%=comic.author%>">
+      <label>Author: </label><input class = "editinput" type = "string" name = "author" value = "<%=comic.author%>">
       <br>
-      <label>Artist: </label><input type = "string" name = "artist" value = "<%=comic.artist%>">
+      <label>Artist: </label><input class = "editinput" type = "string" name = "artist" value = "<%=comic.artist%>">
       <br>
-      <label>Quantity: </label><input type = "number" name = "qty" value = "<%=comic.qty%>">
+      <label>Quantity: </label><input class = "editinput" type = "number" name = "qty" value = "<%=comic.qty%>">
       <input type = "hidden" name = "_method" value = "PUT">
       <br>
-      <button>submit</button>
+      <button id = "editbutton">E D I T</button>
     </form>
   </div>
 </body>

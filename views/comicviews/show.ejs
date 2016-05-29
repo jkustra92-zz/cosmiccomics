@@ -2,25 +2,31 @@
 <html>
 <head>
   <title><%=comic.title%></title>
+  <% include ../partials/head.ejs %>
 </head>
 <body>
-<div>
-  <p><img height = "450px", width = "275px" src="<%=comic.imgUrl%>"></p>
-  <p><strong>Title: </strong><%=comic.title%></p>
-  <p><strong>Issue Number: </strong><%=comic.issueNumber%></p>
-  <p><strong>Author: </strong><%=comic.author%></p>
-  <p><strong>Artist: </strong><%=comic.artist%></p>
-
-  <form action = "/user/<%=user._id%>" method = "POST">
-    <input type="hidden" name="title" value = "<%=comic.title%>">
-    <input type="hidden" name="issueNumber" value = "<%=comic.issueNumber%>">
-    <input type="hidden" name="imgUrl" value = "<%=comic.imgUrl%>">
-    <input type="hidden" name="author" value = "<%=comic.author%>">
-    <input type="hidden" name="artist" value = "<%=comic.artist%>">
-    <input type="hidden" name="qty" value = "<%=comic.qty%>">
-    <button>submit</button>
-  </form>
-</div>
+  <% include ../partials/header.ejs %>
+  <div id ="searchresultcontainer">
+    <div id = "comicdisplay">
+      <p><img class = "showcomic" src="<%=comic.imgUrl%>"></p>
+      <br>
+      <p><strong>Title: </strong><%=comic.title%></p>
+      <p><strong>Issue Number: </strong><%=comic.issueNumber%></p>
+      <p><strong>Author: </strong><%=comic.author%></p>
+      <p><strong>Artist: </strong><%=comic.artist%></p>
+    </div>
+    <p>would you like to add this comic?
+    <form action = "/user/<%=user._id%>" method = "POST" id = "addform">
+      <input type="hidden" name="title" value = "<%=comic.title%>">
+      <input type="hidden" name="issueNumber" value = "<%=comic.issueNumber%>">
+      <input type="hidden" name="imgUrl" value = "<%=comic.imgUrl%>">
+      <input type="hidden" name="author" value = "<%=comic.author%>">
+      <input type="hidden" name="artist" value = "<%=comic.artist%>">
+      <input type="hidden" name="qty" value = "<%=comic.qty%>">
+      <button id ="addbutton">Y E S</button>
+    </form>
+    <a href="/user"><button id ="nobutton">N O</button></a>
+  </div>
 </body>
 </html>
 

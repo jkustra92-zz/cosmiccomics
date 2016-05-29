@@ -2,13 +2,20 @@
 <html>
 <head>
   <title></title>
+  <% include ../partials/head.ejs %>
 </head>
 <body>
-  <form action = "/comics/search" method= "POST">
-    <input type="text" name = "title" placeholder= "title">
-    <input type="text" name = "startYear" placeholder= "start year">
-    <input type="text" name = "issueNumber" placeholder= "issue number">
-    <button>search</button>
-  </form>
+  <% include ../partials/header.ejs %>
+  <div id = "searchcontainer">
+    <form action = "/comics/search" method= "POST" id = "searchform">
+      <input class = "searchinput" type="text" name = "title" placeholder= "title">
+      <br>
+      <input class = "searchinput" type="text" name = "startYear" placeholder= "start year">
+      <br>
+      <input class = "searchinput" type="text" name = "issueNumber" placeholder= "issue number">
+      <br>
+      <button id = "searchbutton">search</button>
+    </form>
+  </div>
 </body>
 </html>

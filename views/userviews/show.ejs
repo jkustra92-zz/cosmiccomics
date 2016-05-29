@@ -2,24 +2,25 @@
 <html>
 <head>
   <title><%=comic.title%></title>
+  <% include ../partials/head.ejs %>
 </head>
 <body>
-<div>
-  <p><img height = "450px", width = "275px" src="<%=comic.imgUrl%>"></p>
-  <p><strong>Title: </strong><%=comic.title%></p>
-  <p><strong>Issue Number: </strong><%=comic.issueNumber%></p>
-  <p><strong>Author: </strong><%=comic.author%></p>
-  <p><strong>Artist: </strong><%=comic.artist%></p>
-  <p><strong>Quantity: </strong><%=comic.qty%></p>
-  <div id = "edit-link">
-    <button><a href="/user/comics/<%=comic.id%>/edit">edit me!</a></button>
+  <% include ../partials/header.ejs %>
+  <div id = "showcontainer">
+    <div id = "usercomiccontainer">
+      <p><img class = "showcomic" src="<%=comic.imgUrl%>"></p>
+      <p><strong>Title: </strong><%=comic.title%></p>
+      <p><strong>Issue Number: </strong><%=comic.issueNumber%></p>
+      <p><strong>Author: </strong><%=comic.author%></p>
+      <p><strong>Artist: </strong><%=comic.artist%></p>
+      <p><strong>Quantity: </strong><%=comic.qty%></p>
+    </div>
+      <button class = "showbutton"><a href="/user/comics/<%=comic.id%>/edit"><img src="/images/edit.png"></a></button>
+      <form action = "/user/comics/<%=comic._id%>" method = "POST">
+        <input type = "hidden" name = "_method" value = "DELETE"/>
+        <button class = "showbutton"><img src="/images/garbage.png"></button>
+      </form>
+    </div>
   </div>
-  <div id = "delete-button">
-    <form action = "/user/comics/<%=comic._id%>" method = "POST">
-      <input type = "hidden" name = "_method" value = "DELETE"/>
-      <button>delete</button>
-    </form>
-  </div>
-</div>
 </body>
 </html>

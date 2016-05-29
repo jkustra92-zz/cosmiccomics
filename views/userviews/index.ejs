@@ -2,19 +2,28 @@
 <html>
 <head>
   <title>all da comics for <%=user.name%></title>
+  <% include ../partials/head.ejs %>
 </head>
 <body>
+  <header>
+  <% include ../partials/header.ejs %>
+  </header>
+<div id = "homepage">
+  <div id = "searchbuttoncontainer">
+  <a href="/comics/search"><button id = "comicsearch">S E A R C H</button>
+  </div></a>
   <% if(comics.length > 0){ %>
+    <h1 id = "title">MY COMICS</h1>
     <% for (var i = 0; i < comics.length; i++) { %>
       <div id = "comics">
-        <a href="/user/comics/<%=comics[i].id%>"><img src = "<%=comics[i].imgUrl%>"></a>
+        <a href="/user/comics/<%=comics[i].id%>"><img id = "comicbookimg" src = "<%=comics[i].imgUrl%>"></a>
       </div>
     <%}%>
   <% } else{ %>  
    <div id = "no-comics">
-    <p> you have no comics! click search to look some up and change that!</p>
+    <p> YOU HAVE NO COMICS! <br><br><br> search for some to change that!</p>
    </div>
   <% } %>
-  <div id = "search-button"><a href="/comics/search"><button>search</button></a>
+</div>
 </body>
 </html>
