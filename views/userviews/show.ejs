@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%=comic.title%></title>
+</head>
+<body>
+<div>
+  <p><img height = "450px", width = "275px" src="<%=comic.imgUrl%>"></p>
+  <p><strong>Title: </strong><%=comic.title%></p>
+  <p><strong>Issue Number: </strong><%=comic.issueNumber%></p>
+  <p><strong>Author: </strong><%=comic.author%></p>
+  <p><strong>Artist: </strong><%=comic.artist%></p>
+  <p><strong>Quantity: </strong><%=comic.qty%></p>
+  <div id = "edit-link">
+    <button><a href="/user/comics/<%=comic.id%>/edit">edit me!</a></button>
+  </div>
+  <div id = "delete-button">
+    <form action = "/user/comics/<%=comic._id%>" method = "POST">
+      <input type = "hidden" name = "_method" value = "DELETE"/>
+      <button>delete</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

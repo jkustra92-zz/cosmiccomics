@@ -10,6 +10,16 @@
   <p><strong>Issue Number: </strong><%=comic.issueNumber%></p>
   <p><strong>Author: </strong><%=comic.author%></p>
   <p><strong>Artist: </strong><%=comic.artist%></p>
+
+  <form action = "/user/<%=user._id%>" method = "POST">
+    <input type="hidden" name="title" value = "<%=comic.title%>">
+    <input type="hidden" name="issueNumber" value = "<%=comic.issueNumber%>">
+    <input type="hidden" name="imgUrl" value = "<%=comic.imgUrl%>">
+    <input type="hidden" name="author" value = "<%=comic.author%>">
+    <input type="hidden" name="artist" value = "<%=comic.artist%>">
+    <input type="hidden" name="qty" value = "<%=comic.qty%>">
+    <button>submit</button>
+  </form>
 </div>
 </body>
 </html>

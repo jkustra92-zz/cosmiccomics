@@ -1,8 +1,13 @@
+//=============
+//requirements
+//=============
+
 var express = require("express");
 var router = express.Router();
-var md5 = require("md5");
 var request = require("request");
-var Comic = require("../models/comics.js")
+var md5 = require("md5");
+var Comic = require("../models/comics.js");
+var User = require("../models/users.js");
 var publicKey = process.env.MARVEL_PUBLIC_KEY;
 var privateKey = process.env.MARVEL_PRIVATE_KEY;
 var ts = Date.now();
@@ -26,7 +31,7 @@ router.post("/search", function(req, res){
   res.redirect("/comics/" + searchTitle + "/" + searchStartYear + "/" + searchIssueNumber)
 })
 
-router.get("/:title/:startYear/:issueNumber", function(req, res){
+router.get("/:title/:startYear/:issueNumber", function(req, res){                           //and now for the biggest block of code in the world...
   var title = req.params.title;
   var issueNumber = req.params.issueNumber;
   var startYear = req.params.startYear;
@@ -54,11 +59,17 @@ router.get("/:title/:startYear/:issueNumber", function(req, res){
         imgUrl: responseImgUrl,
         author: responseAuthor,
         artist: responseArtist,
+        qty: 1
       }
-      
-      res.render("comicviews/show.ejs", {comic: comicOutput})
+
+      console.log(req.cookies.email);
+       var user = User.findOne({email: req.cookies.email}).then(function(user){
+        res.render("comicviews/show.ejs", {comic: comicOutput, user: user})
+        console.log(user)
+      });
       // console.log(responseTitle, responseIssueNumber, responseImgUrl, responseAuthor, responseArtist);                                         //i feel like a master of parsing data.
   });
 });
+
 
 module.exports = router;

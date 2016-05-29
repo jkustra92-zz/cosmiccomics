@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 
 var userSchema = new mongoose.Schema({
   name: String,
+  email: {type: String, require: true, unique: true},
   comics: Array
 });
 
@@ -16,6 +17,6 @@ var userSchema = new mongoose.Schema({
 // #mapit
 //=========
 
-var Product = mongoose.model("Product", productSchema);
+var User = mongoose.model("User", userSchema);
 
-module.exports = Product;
+module.exports = User;

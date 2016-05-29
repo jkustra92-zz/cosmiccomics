@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>all da comics for <%=user.name%></title>
+</head>
+<body>
+  <% if(comics.length > 0){ %>
+    <% for (var i = 0; i < comics.length; i++) { %>
+      <div id = "comics">
+        <a href="/user/comics/<%=comics[i].id%>"><img src = "<%=comics[i].imgUrl%>"></a>
+      </div>
+    <%}%>
+  <% } else{ %>  
+   <div id = "no-comics">
+    <p> you have no comics! click search to look some up and change that!</p>
+   </div>
+  <% } %>
+  <div id = "search-button"><a href="/comics/search"><button>search</button></a>
+</body>
+</html>

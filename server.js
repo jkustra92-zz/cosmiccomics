@@ -5,6 +5,8 @@ require("events").EventEmitter.prototype._maxListeners = 0;       //so marvel's 
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
+var cookieParser = require("cookie-parser");
+var ejs = require("ejs");
 var db = process.env.MONGODB_URI || "mongodb://localhost/comic_collection";
 var methodOverride = require("method-override");
 var mongoose = require("mongoose");
@@ -26,6 +28,7 @@ app.use(methodOverride(function(req, res){
     return method;
   }
 }));
+app.use(cookieParser());
 
 //===============
 // static stuffs
@@ -40,8 +43,8 @@ app.use(express.static("public"));
 var comicsController = require("./controllers/comics.js");
 app.use("/comics/", comicsController);
 
-// var userController = require("./controllers/users.js");
-// app.use("/users/", userController);
+var userController = require("./controllers/users.js");
+app.use("/user/", userController);
 
 // var seedController = require("./controllers/seed.js");
 // app.use("/seed/", seedController);
@@ -50,7 +53,7 @@ app.use("/comics/", comicsController);
 // connect to the db
 //===================
 
-// mongoose.connect(db);
+mongoose.connect(db);
 
 //============
 // it listens
