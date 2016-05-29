@@ -15,12 +15,13 @@
       <p><strong>Artist: </strong><%=comic.artist%></p>
       <p><strong>Quantity: </strong><%=comic.qty%></p>
     </div>
-      <button class = "showbutton"><a href="/user/comics/<%=comic.id%>/edit"><img src="/images/edit.png"></a></button>
+      <button id = "buttonedit"><a href="/user/comics/<%=comic.id%>/edit"><img src="/images/edit.png"></a></button>
       <form action = "/user/comics/<%=comic._id%>" method = "POST">
         <input type = "hidden" name = "_method" value = "DELETE"/>
-        <button class = "showbutton"><img src="/images/garbage.png"></button>
+        <button id = "deletebutton"><img src="/images/garbage.png"></button>
       </form>
     </div>
   </div>
+  <% include ../partials/footer.ejs %>
 </body>
 </html>
