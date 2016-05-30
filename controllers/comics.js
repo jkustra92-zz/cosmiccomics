@@ -53,6 +53,10 @@ router.get("/:title/:startYear/:issueNumber", function(req, res){               
           var responseArtist = myData.data.results[0].creators.items[i].name;
         }
       }
+      responsePrice = myData.data.results[0].prices[0].price;
+      responsePageCount = myData.data.results[0].pageCount;
+      console.log(responsePrice);
+      console.log(responsePageCount);
       var comicOutput = {
         title: responseTitle,
         issueNumber: responseIssueNumber,
@@ -60,12 +64,13 @@ router.get("/:title/:startYear/:issueNumber", function(req, res){               
         author: responseAuthor,
         artist: responseArtist,
         qty: 1,
+        price: responsePrice,
+        pageCount: responsePageCount
       }
-
-      console.log(req.cookies.email);
+      console.log(comicOutput)
+      // console.log(req.cookies.email);
        var user = User.findOne({email: req.cookies.email}).then(function(user){
         res.render("comicviews/show.ejs", {comic: comicOutput, user: user});
-        // console.log(user)
       });
       // console.log(responseTitle, responseIssueNumber, responseImgUrl, responseAuthor, responseArtist);                                         //i feel like a master of parsing data.
   });

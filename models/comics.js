@@ -14,6 +14,8 @@ var comicSchema = new mongoose.Schema({
   author: String,
   artist: String,
   qty: Number,
+  price: Number,
+  pageCount: Number
 });
 
 //=========

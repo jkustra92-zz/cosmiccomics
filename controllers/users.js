@@ -63,6 +63,33 @@ router.post("/", function(req, res){
   })
 });
 
+//=======
+// stats
+//=======
+
+router.get("/comics/stats", function(req, res){
+  // console.log("hey");
+ var user = User.findOne({email: req.cookies.email}).then(function(user){
+    Promise.all(user.comics.map(function(id){                              
+      return Comic.findById(id);                                            
+    })
+    ).then(function(comics){
+      // console.log(comics);
+      var priceArray = comics.map(function(value){
+        return value.price
+        // priceArray.push(comics[value].price)
+      })
+      // console.log(priceArray);
+      var pageArray = comics.map(function(value){
+        return value.pageCount
+      })
+      console.log(pageArray);
+      // res.render("userviews/index.ejs", {user: user, comics: comics})
+    }).fail(function(err){
+      console.log(err);
+    })
+  })
+})
 
 //======
 // show
