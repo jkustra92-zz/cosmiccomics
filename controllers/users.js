@@ -123,7 +123,7 @@ router.delete("/comics/:id", function(req, res){
   var user = User.findOne({email: req.cookies.email}).then(function(user){      //so this was a little different from what we've been doing. i have a one to many relationship
     var deleteIndex = user.comics.indexOf(req.params.id)                        //with the comics and the users they belong to. so i was originally deleting the comic from the 
     user.comics.splice(deleteIndex, 1)                                         //database and then my ejs file was freaking out bc it was trying to render something that doesn't exist. so instead, i 
-    // console.log(user.comics)                                                //need to go old school and splice it from the users array. nice.
+    // console.log(user.comics)                                                //need to go old school and splice it from the user's array. nice.
     user.save();                                                               
     res.redirect("/user")                                                                              
   })                                                       

@@ -205,6 +205,11 @@ a:hover {
   box-shadow: 5px 5px 2px darkred;
 }
 
+button {
+  color: #e6f2ee; 
+  background-color: #16272c;
+}
+
 /*FOOTER*/
 
 footer{
