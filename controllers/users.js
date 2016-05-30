@@ -75,16 +75,28 @@ router.get("/comics/stats", function(req, res){
     })
     ).then(function(comics){
       // console.log(comics);
-      var priceArray = comics.map(function(value){
-        return value.price
-        // priceArray.push(comics[value].price)
+      var priceArray = comics.map(function(value){                            //utilizing map and reduce to get the total price and page count for the 
+        return value.price                                                    //comics in the user's array. have a separate show page for these totals.
       })
       // console.log(priceArray);
       var pageArray = comics.map(function(value){
         return value.pageCount
       })
-      console.log(pageArray);
-      // res.render("userviews/index.ejs", {user: user, comics: comics})
+      // console.log(pageArray);
+      var price = priceArray.reduce(function(previous, current){
+        return previous + current
+      })
+      // console.log(price);
+      var pageCount = pageArray.reduce(function(previous, current){
+        return previous + current
+      })
+      // console.log(pageCount);
+      var comics = {
+        price: price,
+        pageCount: pageCount
+      }
+      // console.log(comics);
+      res.render("userviews/stats.ejs", {user: user, comics: comics})
     }).fail(function(err){
       console.log(err);
     })

@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>all da comics for <%=user.name%></title>
+  <title>comic stats for <%=user.name%></title>
   <% include ../partials/head.ejs %>
 </head>
 <body>
 <% include ../partials/header.ejs %>
-<div id = "homepage">
-  <% if(comics.length > 0){ %>
-    <h1 id = "title">MY COMICS</h1>
-    <% for (var i = 0; i < comics.length; i++) { %>
-      <div id = "comics">
-        <a href="/user/comics/<%=comics[i].id%>"><img id = "comicbookimg" src = "<%=comics[i].imgUrl%>"></a>
+<div id = "statspage">
+  <% if(user.comics.length > 0){ %>
+    <h1 id = "title2">MY COMIC STATS</h1>
+      <div id = "comicstats"><br><br><br>
+        <p>The total cost of this collection is $<%=comics.price%>!</p><br><br><br>
+        <p>This collection has a total of <%=comics.pageCount%> pages!</p>
       </div>
-    <%}%>
   <% } else{ %>  
-   <div id = "no-comics">
+   <div id = "no-comic-stats">
     <p> YOU HAVE NO COMICS! <br><br><br> search for some to change that!</p>
    </div>
   <% } %>
