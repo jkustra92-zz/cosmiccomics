@@ -57,17 +57,6 @@ a:hover {
 
 /*USER PAGE*/
 
-#searchbuttoncontainer {
-  text-align: center;
-  margin-top: 10em;
-}
-
-#comicsearch {
-  width: 8rem;
-  height: 2rem;
-  box-shadow: 5px 5px 2px darkred;
-}
-
 /* has no comics*/
 
 #no-comics {
@@ -115,6 +104,8 @@ a:hover {
 }
 
 #userformbutton {
+  color: #e6f2ee; 
+  background-color: #16272c;
   width: 6rem;
   height: 2rem;
   margin-top: 5em;
@@ -136,6 +127,8 @@ a:hover {
 }
 
 #searchbutton {
+  color: #e6f2ee; 
+  background-color: #16272c;
   width: 6rem;
   height: 2rem;
   margin-top: 3em;
@@ -155,6 +148,8 @@ a:hover {
 }
 
 #addbutton{
+  color: #e6f2ee; 
+  background-color: #16272c;
   width: 3rem;
   height: 1rem;
   margin-top: 1em;
@@ -162,6 +157,8 @@ a:hover {
 }
 
 #nobutton{
+  color: #e6f2ee; 
+  background-color: #16272c;
   width: 3rem;
   height: 1rem;
   margin-top: 1em;
@@ -199,15 +196,12 @@ a:hover {
 }
 
 #editbutton {
+  color: #e6f2ee; 
+  background-color: #16272c;
   width: 6rem;
   height: 2rem;
   margin-top: 3em;
   box-shadow: 5px 5px 2px darkred;
-}
-
-button {
-  color: #e6f2ee; 
-  background-color: #16272c;
 }
 
 /*FOOTER*/
@@ -248,6 +242,10 @@ footer{
     height: 8em;
     background-color: #e6f2ee;
     color: white;
+  }
+
+  #comics {
+    display: inline-block;
   }
 
   .searchinput {

@@ -13,7 +13,7 @@ var comicSchema = new mongoose.Schema({
   imgUrl: String,
   author: String,
   artist: String,
-  qty: Number
+  qty: Number,
 });
 
 //=========

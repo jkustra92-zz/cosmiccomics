@@ -38,9 +38,9 @@ router.get("/", function(req, res){
     }
 });
 
-//=====
+//==========
 // new user
-//=====
+//==========
 
 router.get("/adduser", function(req, res){
   res.render("userviews/new.ejs");                     
@@ -73,7 +73,7 @@ router.get("/comics/:id", function(req, res){
   var comic = Comic.findById(req.params.id).then(function(comic){
     res.render("userviews/show.ejs", {comic})
   })
-})
+});
 
 //=======
 // edit
