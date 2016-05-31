@@ -7,7 +7,7 @@ var app = express();
 var bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
 var ejs = require("ejs");
-var db = process.env.MONGODB_URI || "mongodb://localhost/comic_collection";
+var mongoUri = process.env.MONGOLAB_URI|| "mongodb://localhost/comic_collection";
 var methodOverride = require("method-override");
 var mongoose = require("mongoose");
 var logger = require("morgan");
@@ -46,14 +46,14 @@ app.use("/comics/", comicsController);
 var userController = require("./controllers/users.js");
 app.use("/user/", userController);
 
-// var seedController = require("./controllers/seed.js");
-// app.use("/seed/", seedController);
+var seedController = require("./controllers/seed.js");
+app.use("/seed/", seedController);
 
 //===================
 // connect to the db
 //===================
 
-mongoose.connect(db);
+mongoose.connect(mongoUri);
 
 //============
 // it listens
