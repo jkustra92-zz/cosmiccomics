@@ -11,7 +11,6 @@ var User = require("../models/users.js");
 var publicKey = process.env.MARVEL_PUBLIC_KEY;
 var privateKey = process.env.MARVEL_PRIVATE_KEY;
 var ts = Date.now();
-var hash = md5(ts+privateKey+publicKey)
 
 //============
 //search form
@@ -19,19 +18,19 @@ var hash = md5(ts+privateKey+publicKey)
 
 router.get("/search", function(req, res){
   res.render("comicviews/search.ejs")
-})
+});
 
 router.post("/search", function(req, res){
   var searchTitle = req.body.title;
-  var searchIssueNumber = req.body.issueNumber
-  var searchStartYear = req.body.startYear
+  var searchIssueNumber = req.body.issueNumber;
+  var searchStartYear = req.body.startYear;
   // console.log(searchTitle)
   // console.log(searchIssueNumber)
   // console.log(searchStartYear)
   res.redirect("/comics/" + searchTitle + "/" + searchStartYear + "/" + searchIssueNumber)
-})
+});
 
-router.get("/:title/:startYear/:issueNumber", function(req, res){                           //and now for the biggest block of code in the world...
+router.get("/:title/:startYear/:issueNumber", function(req, res){                           //and now for the biggest block of code in the world... this is a lot of work just to render a search result page, but i'm really happy with it.
   var title = req.params.title;
   var issueNumber = req.params.issueNumber;
   var startYear = req.params.startYear;
@@ -70,8 +69,8 @@ router.get("/:title/:startYear/:issueNumber", function(req, res){               
       console.log(comicOutput)
       // console.log(req.cookies.email);
        var user = User.findOne({email: req.cookies.email}).then(function(user){
-        res.render("comicviews/show.ejs", {comic: comicOutput, user: user});
-      });
+        res.render("comicviews/show.ejs", {comic: comicOutput, user: user});                                    //this is just rendering the search result. it won't actually get added to the DB unless the user wants it to.
+      });                                                                                                       //there's a hidden form on the page to help with that process.
       // console.log(responseTitle, responseIssueNumber, responseImgUrl, responseAuthor, responseArtist);                                         //i feel like a master of parsing data.
   });
 });

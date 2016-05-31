@@ -58,7 +58,7 @@ router.post("/", function(req, res){
       console.log(err);
     }else{
       res.cookie("email", user.email);                                    //figured it'd be best to set the cookie as the user's email since they have to be unique - no confusion here!
-      res.redirect("/user")
+      res.redirect("/user");
     }
   })
 });
@@ -101,14 +101,14 @@ router.get("/comics/stats", function(req, res){
       console.log(err);
     })
   })
-})
+});
 
 //======
 // show
 //======
 
-router.get("/comics/:id", function(req, res){
-  // console.log(req.params.id)
+router.get("/comics/:id", function(req, res){                                  //each user has their own version of their comics in the database. this is cool bc they
+  // console.log(req.params.id)                                                //they can edit the info about those comics and nobody else's will be changed. it's theirs alone.
   var comic = Comic.findById(req.params.id).then(function(comic){
     res.render("userviews/show.ejs", {comic})
   })
@@ -144,8 +144,8 @@ router.put("/comics/:id", function(req, res){
 
 router.post("/:id", function(req, res){
   var user = User.findOne({email: req.cookies.email}).then(function(user){
-    var comic = new Comic(req.body)         
-    // console.log(comic);
+    var comic = new Comic(req.body)                                       //when the user hits the submit button, a new comic instance is created in the database. it is then saved
+    // console.log(comic);                                                //and the id is pushed into the user's comics array.
     comic.save();                                                         
     user.comics.push(comic._id);
     user.save();                                                          //if i don't do this, then it won't be saved in the database and that would be unforunate.
