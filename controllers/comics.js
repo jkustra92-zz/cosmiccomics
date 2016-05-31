@@ -12,13 +12,17 @@ var publicKey = process.env.MARVEL_PUBLIC_KEY;
 var privateKey = process.env.MARVEL_PRIVATE_KEY;
 var ts = Date.now();
 
-//============
-//search form
-//============
+//========================
+//getting the search form
+//========================
 
 router.get("/search", function(req, res){
   res.render("comicviews/search.ejs")
 });
+
+//==================================
+//user submits their search request
+//==================================
 
 router.post("/search", function(req, res){
   var searchTitle = req.body.title;
@@ -30,6 +34,10 @@ router.post("/search", function(req, res){
   res.redirect("/comics/" + searchTitle + "/" + searchStartYear + "/" + searchIssueNumber)
 });
 
+//===========================
+//getting data from the API
+//===========================
+
 router.get("/:title/:startYear/:issueNumber", function(req, res){                           //and now for the biggest block of code in the world... this is a lot of work just to render a search result page, but i'm really happy with it.
   var title = req.params.title;
   var issueNumber = req.params.issueNumber;
@@ -38,7 +46,8 @@ router.get("/:title/:startYear/:issueNumber", function(req, res){               
   // request("http://gateway.marvel.com/v1/public/comics?title=Hawkeye&startYear=2012&issueNumber=3&ts=1464445747&apikey=a7fe91c1a8f9dff79e43e342dfc46824&hash=e74f4e496dbd0b8dfa55d26cf2fc797f", function(err, response, body){
   request("http://gateway.marvel.com/v1/public/comics?title=" + encodeURIComponent(title) + "&startYear=" + startYear + "&issueNumber=" + issueNumber + "&ts=" + ts + "&apikey=" + publicKey + "&hash=" + md5(ts+privateKey+publicKey), function(err, response, body){
       // res.send(body)
-      var myData = JSON.parse(body)
+      // console.log(typeof body);
+      var myData = JSON.parse(body);
       var responseTitle = myData.data.results[0].title;
       var responseIssueNumber = myData.data.results[0].issueNumber;
       var responseImgUrl = myData.data.results[0].images[0].path + ".jpg";
@@ -54,8 +63,8 @@ router.get("/:title/:startYear/:issueNumber", function(req, res){               
       }
       responsePrice = myData.data.results[0].prices[0].price;
       responsePageCount = myData.data.results[0].pageCount;
-      console.log(responsePrice);
-      console.log(responsePageCount);
+      // console.log(responsePrice);
+      // console.log(responsePageCount);
       var comicOutput = {
         title: responseTitle,
         issueNumber: responseIssueNumber,
