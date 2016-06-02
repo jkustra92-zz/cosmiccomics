@@ -43,7 +43,6 @@ router.get("/:title/:startYear/:issueNumber", function(req, res){               
   var issueNumber = req.params.issueNumber;
   var startYear = req.params.startYear;
   // console.log(title, issueNumber, startYear);
-  // request("http://gateway.marvel.com/v1/public/comics?title=Hawkeye&startYear=2012&issueNumber=3&ts=1464445747&apikey=a7fe91c1a8f9dff79e43e342dfc46824&hash=e74f4e496dbd0b8dfa55d26cf2fc797f", function(err, response, body){
   request("http://gateway.marvel.com/v1/public/comics?title=" + encodeURIComponent(title) + "&startYear=" + startYear + "&issueNumber=" + issueNumber + "&ts=" + ts + "&apikey=" + publicKey + "&hash=" + md5(ts+privateKey+publicKey), function(err, response, body){
       // res.send(body)
       // console.log(typeof body);
